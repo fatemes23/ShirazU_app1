@@ -77,6 +77,9 @@ public class EmailNavigation extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        //___________________________________________
+
+
 
 
 

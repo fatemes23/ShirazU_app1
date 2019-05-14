@@ -1,6 +1,7 @@
 package ir.andriod_stdio.shirazu_app1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,6 +10,7 @@ import android.provider.ContactsContract;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +39,7 @@ public class NewsListAdapter extends ArrayAdapter<NewsRaw> {
         String summeryNews = getItem(position).getSummeryNews();
         Bitmap imgNews = getItem(position).getImgNews();
 
-        NewsRaw newComment = new NewsRaw(title,date,summeryNews,imgNews);
+        NewsRaw newsRow = new NewsRaw(title,date,summeryNews,imgNews);
         LayoutInflater inflater= LayoutInflater.from(mContext);
         convertView =inflater.inflate(mResource,parent,false);
 
@@ -45,10 +47,19 @@ public class NewsListAdapter extends ArrayAdapter<NewsRaw> {
         TextView dateTV =  (TextView) convertView.findViewById(R.id.time_text);
         TextView summeryTV =  (TextView) convertView.findViewById(R.id.news_summery);
         ImageView imgTV = (ImageView) convertView.findViewById(R.id.news_img);
+        CardView  cardview = (CardView) convertView.findViewById(R.id.cardview_news);
 
         titleTv.setText(title);
         dateTV.setText(date);
         summeryTV.setText(summeryNews);
+
+       /* newsRow.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
 
 
         //imgTV.setImageBitmap();

@@ -2,12 +2,14 @@ package ir.andriod_stdio.shirazu_app1;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.content.Context;
 import android.database.Cursor;
@@ -115,6 +117,29 @@ public class ListsFragment extends Fragment {
         NewsListAdapter  adapter = new NewsListAdapter(this.getContext() , R.layout.adapter_view_layout , allRows);
         ListView mylistview = (ListView) view.findViewById(R.id.listview);
         mylistview.setAdapter(adapter);
+
+
+
+        //______________inja baraye click kardn roo ye har list___________________
+
+        mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+
+                Intent i = new Intent(ListsFragment.this.getActivity(), MenuActivity.class);
+                //If you wanna send any data to nextActicity.class you can use
+               // i.putExtra(String key, value.get(position));
+
+                //inja har chi bekhaii ezaf koni dige ok hast
+
+                startActivity(i);
+            }
+        });
+        //__________________________________________________________________
+
+
+
+
+
         //_______________________________sana________________________________________
 
 
