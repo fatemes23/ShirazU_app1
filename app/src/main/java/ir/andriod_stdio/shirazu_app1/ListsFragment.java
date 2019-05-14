@@ -95,10 +95,13 @@ public class ListsFragment extends Fragment {
 
         Bitmap icon = BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background);
         //****************************************
-        allRows.add(new NewsRaw("نشست بررسی زیبایی شناسی در  مینای ایرانی درباره قاجار در باغ موزه نگارستان","1398/1/27","گروه حفاظت ایکوم ایران با همکاری  مجموعه باغ" ,icon));
-        allRows.add(new NewsRaw("title","date","summery",icon));
+        allRows.add(new NewsRaw("   نشست بررسی زیبایی شناسی در  مینای ایرانی درباره قاجار در باغ موزه نگارستان","1398/1/27"," گروه حفاظت ایکوم ایران با همکاری  مجموعه باغ" ,icon));
+        allRows.add(new NewsRaw(" اسرائيل به مناسبت برگزاری مسابقات یوروویژن ۲۰۱۹ تدابیر امنیتی را در تل آویو تقویت کرده است.","1398/1/27","جشنواره یوروویژن ۲۰۱۹ که در تل آویو برگزار می\u200Cشود قرار است میزبان نمایندگان ۴۱ کشور اروپایی باشد.\n" +
+                "\n" +
+                "\n" +
+                "گروه\u200Cهای حقوق بشری و فعالان مدنی و اجتماعی بسیاری نسبت به میزبانی این دوره از مسابقات از سوی اسرائيل اعتراض کرده\u200Cاند.",icon));
         allRows.add(new NewsRaw("titlscdce","date","summery",icon));
-        allRows.add(new NewsRaw("title","date","summery",icon));
+        allRows.add(new NewsRaw("تایتل","date","summery",icon));
         allRows.add(new NewsRaw("title","date","summery",icon));
         allRows.add(new NewsRaw("title","date","suddmmery",icon));
         allRows.add(new NewsRaw("tccitle","date","summery",icon));

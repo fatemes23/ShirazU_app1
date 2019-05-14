@@ -5,85 +5,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradinetbackground"
-    tools:context=".MenuActivity">
+    tools:context=".MenuActivity"
+    >
 
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:alpha="1"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@android:color/transparent">
 
-    <LinearLayout
-        android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="8dp"
-        android:orientation="vertical"
-        android:weightSum="4">
-
-        <Button
-            android:id="@+id/announcement"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/line1"
-            android:layout_alignBottom="@+id/line1"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="0dp"
-            android:layout_weight="1"
-            android:background="@color/primary_light"
-            android:drawableTop="@drawable/ic_announcement"
-            android:drawablePadding="0dp"
-            android:paddingTop="20sp"
-            android:paddingBottom="32sp"
-            android:text="@string/announcement"
-            android:textAllCaps="false"
-            android:textColor="@color/primary_text">
+            android:orientation="vertical"
+            android:weightSum="2">
 
-        </Button>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        <Button
-            android:id="@+id/news"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/line1"
+                <Button
+                    android:id="@+id/announcement"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/for_test"
+                    android:text="@string/persion_announcement" />
 
+                <Button
+                    android:id="@+id/news"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/news_paper_redblue" />
 
-            android:layout_marginTop="2dp"
-
-
-            android:layout_weight="1"
-            android:background="@drawable/button_background"
-            android:drawableTop="@drawable/ic_newsicon2"
-            android:drawablePadding="0dp"
-            android:paddingTop="20sp"
-            android:paddingBottom="32sp"
-            android:text="@string/news"
-            android:textAllCaps="false"
-            android:textColor="@color/primary_text"></Button>
-
-        <Button
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="0dp"
-            android:layout_weight="1"
-            android:background="@color/primary_light"
-            android:drawableTop="@drawable/ic_email"
-            android:drawablePadding="0dp"
-            android:paddingTop="20sp"
-            android:paddingBottom="32sp"
-            android:text="@string/email"
-            android:textAllCaps="false"
-            android:textColor="@color/primary_text"></Button>
+            </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-    </LinearLayout>
+                <Button
+                    android:id="@+id/email"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/emil_redblue" />
+
+                <Button
+                    android:id="@+id/contactUs"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1" />
 
 
+            </LinearLayout>
 
 
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>

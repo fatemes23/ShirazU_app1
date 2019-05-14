@@ -26,7 +26,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:divider="#bebebe"
-                android:dividerHeight="0.5sp">
+                android:dividerHeight="0.5sp"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp">
 
             </ListView>
 

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#448AFF</color>
+    <color name="colorPrimary">#1f2041</color>
+    <color name="colorPrimaryDark">#0b132b</color>
+    <color name="colorAccent">#b90039</color>
+
     <color name="gray">#CCBDBD</color>
     <color name="myWhite">#FFFFFF</color>
     <color name="myWhite2">#bebebe</color>
+    <color name="primary_text">#212121</color>
 
         <color name="primary_light">#C5CAE9</color>
 
-        <color name="primary_text">#212121</color>
+        <color name="balck_title">#212121</color>
         <color name="secondary_text">#757575</color>
         <color name="icons">#FFFFFF</color>
         <color name="divider">#BDBDBD</color>
@@ -20,6 +22,7 @@
     <color name="colorIconGray">#cccdce</color>
     <color name="colorBackground">#eff1f2</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="whiteforemail">#FDFDFE</color>
 
 
 </resources>
