@@ -20,6 +20,49 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 
+import android.content.Context;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ListView;
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ListView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -94,6 +137,14 @@ public class ListsFragment extends Fragment {
         allRows = new ArrayList<>();
 
         Bitmap icon = BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background);
+
+        //******************************Inja news hayi k az server gereftam ro set kardam****************************karim
+        for(int i=0;i<MainActivity.allnews.size();i++){
+            allRows.add(new NewsRaw(MainActivity.allnews.get(i).subject,MainActivity.allnews.get(i).date,MainActivity.allnews.get(i).context,icon));
+        }
+        //******************************Inja news hayi k az server gereftam ro set kardam****************************karim
+
+
         //****************************************
         allRows.add(new NewsRaw("   نشست بررسی زیبایی شناسی در  مینای ایرانی درباره قاجار در باغ موزه نگارستان","1398/1/27"," گروه حفاظت ایکوم ایران با همکاری  مجموعه باغ" ,icon));
         allRows.add(new NewsRaw(" اسرائيل به مناسبت برگزاری مسابقات یوروویژن ۲۰۱۹ تدابیر امنیتی را در تل آویو تقویت کرده است.","1398/1/27","جشنواره یوروویژن ۲۰۱۹ که در تل آویو برگزار می\u200Cشود قرار است میزبان نمایندگان ۴۱ کشور اروپایی باشد.\n" +
