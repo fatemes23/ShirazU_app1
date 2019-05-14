@@ -176,7 +176,7 @@ public class ListsFragment extends Fragment {
         mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
 
-                Intent i = new Intent(ListsFragment.this.getActivity(), MenuActivity.class);
+                Intent i = new Intent(ListsFragment.this.getActivity(), SingleNewsActivity.class);
                 //If you wanna send any data to nextActicity.class you can use
                // i.putExtra(String key, value.get(position));
 
