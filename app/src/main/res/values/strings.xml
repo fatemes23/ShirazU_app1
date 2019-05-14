@@ -45,7 +45,8 @@
     <string name="fox_news">shiraz news</string>
 
     <string name="todo">TODO</string>
-    <string name="persion_news">اخبار</string>
-    <string name="persion_announcement">اطلاعیه</string>
+    <string name="persion_news">   اخبار</string>
+    <string name="persion_email">   ایمیل</string>
+    <string name="persion_announcement">   اطلاعیه</string>
 
 </resources>

@@ -13,7 +13,7 @@
             android:name=".EmailNavigation"
             android:label="@string/title_activity_email_navigation"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".DraftEmailListAdaptor" />
+
         <activity android:name=".EmailActivity" />
         <activity android:name=".News" />
         <activity android:name=".MenuActivity" />
