@@ -24,6 +24,13 @@
     <string name="mail_header">Mailboxes</string>
     <string name="compose">Compose</string>
 
+    <string name="mail">Mail</string>
+    <string name="from">From:</string>
+    <string name="to">To:</string>
+
+    <string name="views">بازدید:</string>
+    <string name="source">منبع:</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_email_show">EmailShow</string>
