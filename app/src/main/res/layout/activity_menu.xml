@@ -4,76 +4,143 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradinetbackground"
-    tools:context=".MenuActivity"
-    >
+    android:background="@drawable/backblue"
+    android:orientation="vertical"
+    tools:context=".MenuActivity">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_centerInParent="true"
-        android:alpha="0/5"
-        app:cardElevation="0dp"
-        app:cardBackgroundColor="@android:color/transparent">
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:alpha="0.5"
+        android:background="@color/colorBackground"
+        android:gravity="clip_horizontal|center|right|center_horizontal|center_vertical|fill_vertical"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:weightSum="3">
+
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="2">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:alpha="1"
+            android:background="@android:color/transparent"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:weightSum="4">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/news"
+                android:layout_width="0dp"
+                android:layout_height="200px"
+                android:layout_marginRight="5dp"
+                android:layout_weight="3"
+                android:alpha="1"
+                android:background="@drawable/background_tab"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingRight="8dp"
+                android:text="@string/persion_news"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+
+            <Button
+
+                android:layout_width="0dp"
+                android:layout_height="200px"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <Button
-                    android:id="@+id/announcement"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/for_test"
-                    android:text="@string/persion_announcement" />
-
-                <Button
-                    android:id="@+id/news"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/news_paper_redblue" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <Button
-                    android:id="@+id/email"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/emil_redblue" />
-
-                <Button
-                    android:id="@+id/contactUs"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1" />
-
-
-            </LinearLayout>
+                android:alpha="1"
+                android:background="@drawable/newsicon"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"></Button>
 
 
         </LinearLayout>
 
 
-    </android.support.v7.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:alpha="1"
+            android:background="@android:color/transparent"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <Button
+                android:id="@+id/announcement"
+                android:layout_width="0dp"
+                android:layout_height="200px"
+                android:layout_weight="4"
+                android:background="@drawable/background_tab"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingRight="5dp"
+                android:text="@string/persion_announcement"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+
+
+            <Button
+
+                android:layout_width="0dp"
+                android:layout_height="200px"
+                android:layout_weight="1"
+                android:background="@drawable/ic_announcement" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:alpha="1"
+            android:background="@android:color/transparent"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/email"
+                android:layout_width="0dp"
+                android:layout_height="200px"
+                android:layout_weight="4"
+                android:alpha="1"
+                android:background="@drawable/background_tab"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingRight="8dp"
+                android:text="@string/persion_email"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
+
+            <Button
+
+                android:layout_width="0dp"
+                android:layout_height="200px"
+                android:layout_weight="1"
+                android:background="@drawable/ic_email"
+                android:textDirection="rtl" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>
