@@ -7,8 +7,9 @@
     <color name="whitePallet">#c8c8c8</color>
     <color name="bluepallet">#008e97</color>
 
-    <color name="primary_text">#212121</color>
+    <color name="primary_text">#231F1F</color>
     <color name="balck_title">#212121</color>
+    <color name="balck">#000001</color>
 
     <color name="gray">#CCBDBD</color>
     <color name="myWhite">#FFFFFF</color>

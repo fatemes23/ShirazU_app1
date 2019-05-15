@@ -140,28 +140,16 @@ public class ListsFragment extends Fragment {
 
         Bitmap icon = BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background);
 
-        //******************************Inja news hayi k az server gereftam ro set kardam****************************karim
-      /*  for(int i=0;i<MainActivity.allnews.size();i++){
-            allRows.add(new NewsRaw(MainActivity.allnews.get(i).subject,MainActivity.allnews.get(i).date,MainActivity.allnews.get(i).context,icon));
-        }*/
-        //******************************Inja news hayi k az server gereftam ro set kardam****************************karim
-
 
         //*******************************ja ii k bar asase tag ha set mikoni *********
         if(nameOfPage.equals("اخبار دانشگاه")){
-            allRows.add(new NewsRaw("inja akhabare danesh gaheeee","date","summery",icon));
-
-
-            allRows.add(new NewsRaw("sag","date","summery",icon));
-            allRows.add(new NewsRaw("gav","date","summery",icon));
-            allRows.add(new NewsRaw("title","date","suddmmery",icon));
-            allRows.add(new NewsRaw("tccitle","date","summery",icon));
-            allRows.add(new NewsRaw("title","date","summery",icon));
-            allRows.add(new NewsRaw("title","date","summery",icon));
-            allRows.add(new NewsRaw("title","date","summe445ry",icon));
-
+            for(int i=0;i<MainActivity.allnews.size();i++){
+                allRows.add(new NewsRaw(MainActivity.allnews.get(i).subject,MainActivity.allnews.get(i).date,MainActivity.allnews.get(i).summary,icon));
+            }
         }else if (nameOfPage.equals("اخبار امروز")){
-            allRows.add(new NewsRaw("inja akhabare emroooze","date","summery",icon));
+            for(int i=0;i<MainActivity.todaynews.size();i++){
+            allRows.add(new NewsRaw(MainActivity.todaynews.get(i).subject,MainActivity.todaynews.get(i).date,MainActivity.todaynews.get(i).summary,icon));
+        }
         }else if ( nameOfPage.equals("اخبار مرتبط با دانشگاه")){
             allRows.add(new NewsRaw("inja akhabare mortabet ba danesh gah ","date","summery",icon));
         }else if ( nameOfPage.equals("آموزشی")){
@@ -175,8 +163,6 @@ public class ListsFragment extends Fragment {
         }else if ( nameOfPage.equals("سایر")){
             allRows.add(new NewsRaw("inja etelaiiee ye سایر ","date","summery",icon));
         }
-
-        //*************************************
 
 
         NewsListAdapter  adapter = new NewsListAdapter(this.getContext() , R.layout.adapter_view_layout , allRows);
@@ -193,9 +179,9 @@ public class ListsFragment extends Fragment {
                 Intent i = new Intent(ListsFragment.this.getActivity(), SingleNewsActivity.class);
                 //If you wanna send any data to nextActicity.class you can use
                // i.putExtra(String key, value.get(position));
-
+                i.putExtra("id",MainActivity.allnews.get(position).id);
                 //inja har chi bekhaii ezaf koni dige ok hast
-
+                System.out.println(MainActivity.allnews.get(position).id);
                 startActivity(i);
             }
         });

@@ -46,8 +46,10 @@ public class EmailNavigation extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "hello ", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               /* Snackbar.make(view, "hello ", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                Intent intent = new Intent( EmailNavigation.this,ComposeMailActivity.class);
+                startActivity(intent);
             }
         });
 
