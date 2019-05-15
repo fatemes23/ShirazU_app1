@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jsonobj = jsonarray.getJSONObject(i);
                     New khabar=new New();
                     khabar.subject=jsonobj.getString("subject");
+                    khabar.summary=jsonobj.getString("summary");
                     khabar.context=jsonobj.getString("context");
                     khabar.date=jsonobj.getString("date").substring(0,10);
                     allnews.add(khabar);
@@ -181,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
                     New khabar=new New();
                     khabar.subject=jsonobj.getString("subject");
                     khabar.context=jsonobj.getString("context");
+                    khabar.summary=jsonobj.getString("summary");
                     khabar.date=jsonobj.getString("date").substring(0,10);
                     todaynews.add(khabar);
                 }
