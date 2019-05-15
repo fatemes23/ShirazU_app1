@@ -53,14 +53,6 @@ public class NewsListAdapter extends ArrayAdapter<NewsRaw> {
         dateTV.setText(date);
         summeryTV.setText(summeryNews);
 
-       /* newsRow.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
-
 
         //imgTV.setImageBitmap();
         imgTV.setImageResource(R.drawable.mooze);
