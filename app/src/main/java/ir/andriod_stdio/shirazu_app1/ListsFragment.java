@@ -167,18 +167,6 @@ public class ListsFragment extends Fragment {
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         NewsListAdapter  adapter = new NewsListAdapter(this.getContext() , R.layout.adapter_view_layout , allRows);
         ListView mylistview = (ListView) view.findViewById(R.id.listview);
         mylistview.setAdapter(adapter);
@@ -193,9 +181,9 @@ public class ListsFragment extends Fragment {
                 Intent i = new Intent(ListsFragment.this.getActivity(), SingleNewsActivity.class);
                 //If you wanna send any data to nextActicity.class you can use
                // i.putExtra(String key, value.get(position));
-
+                i.putExtra("id",MainActivity.allnews.get(position).id);
                 //inja har chi bekhaii ezaf koni dige ok hast
-
+                System.out.println(MainActivity.allnews.get(position).id);
                 startActivity(i);
             }
         });
