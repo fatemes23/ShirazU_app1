@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ir.andriod_stdio.shirazu_app1">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,7 +14,7 @@
 
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".AnnouncmentActivity"></activity>
-=======
+
         <activity android:name=".ComposeMailActivity">
            </activity>
 
@@ -25,7 +26,6 @@
         <activity android:name=".News" />
         <activity android:name=".SingleNewsActivity" />
         <activity android:name=".SingleMailActivity" />
-        <activity android:name=".MenuActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

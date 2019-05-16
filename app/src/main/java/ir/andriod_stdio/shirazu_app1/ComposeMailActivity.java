@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ComposeMailActivity extends AppCompatActivity {
 
@@ -48,10 +49,13 @@ public class ComposeMailActivity extends AppCompatActivity {
                 } catch (ActivityNotFoundException e) {
                     Log.e("tag", "No activity can handle picking a file. Showing alternatives.");
                 }*/
-                Intent intent = new Intent();
+               /* Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("file/*");
-                startActivity(intent);
+                startActivity(intent);*/
+               Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("*/*");
+                startActivityForResult(intent, 11);
 
 
             }
@@ -84,7 +88,10 @@ public class ComposeMailActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     String FilePath = data.getData().getPath();
                     //FilePath is your file as a string
+                    Toast.makeText(ComposeMailActivity
+                            .this, FilePath , Toast.LENGTH_LONG).show();
                 }
+                break;
         }
     }
 }
