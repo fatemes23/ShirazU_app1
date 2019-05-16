@@ -41,7 +41,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // bere be page fargment
-                Intent intent = new Intent( MenuActivity.this,News.class);
+                Intent intent = new Intent( MenuActivity.this,AnnouncmentActivity.class);
                 intent.putExtra("which_news_or_announcement" , "a");
                 startActivity(intent);
             }
