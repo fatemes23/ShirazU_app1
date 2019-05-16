@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="80dp"
+    android:layoutDirection="rtl"
     >
 
 
@@ -34,7 +35,6 @@
                 android:id="@+id/emailUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginStart="6dp"
                 android:textColor="@color/primary_text"
                 android:textSize="15sp"
@@ -44,7 +44,7 @@
                 android:id="@+id/emaildate"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:gravity="end"
+                android:gravity="start"
                 android:layout_marginEnd="5dp"
                 android:textColor="@color/secondary_text" />
 
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="(no subject)"
-            android:gravity="start"
+            android:gravity="end"
             android:textSize="15sp"
             android:layout_marginStart="6dp"
             android:textColor="@color/primary_text"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
 
-            android:gravity="end"
+            android:gravity="start"
             android:textColor="@color/secondary_text"
             />
 

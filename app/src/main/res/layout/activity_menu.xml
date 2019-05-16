@@ -1,146 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backblue"
-    android:orientation="vertical"
-    tools:context=".MenuActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/shiraz_university_pic">
+
+    <ImageView
+        android:id="@+id/shz_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/university_logo" />
 
 
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:alpha="0.5"
-        android:background="@color/colorBackground"
-        android:gravity="clip_horizontal|center|right|center_horizontal|center_vertical|fill_vertical"
+        android:id="@+id/buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="600dp"
+        android:layout_marginBottom="131dp"
         android:orientation="vertical"
-        android:padding="5dp"
-        android:weightSum="3">
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/shz_img"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <Button
+            android:id="@+id/news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style"
+            android:ems="15"
+            android:text="@string/persion_news"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:alpha="1"
-            android:background="@android:color/transparent"
-            android:gravity="right"
-            android:orientation="horizontal"
-            android:weightSum="4">
+        <Button
+            android:id="@+id/announcement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_style"
+            android:ems="15"
+            android:text="@string/persion_announcement"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
 
-            <Button
-                android:id="@+id/news"
-                android:layout_width="0dp"
-                android:layout_height="200px"
-                android:layout_marginRight="5dp"
-                android:layout_weight="3"
-                android:alpha="1"
-                android:background="@drawable/background_tab"
-                android:gravity="center_horizontal|center_vertical"
-                android:paddingRight="8dp"
-                android:text="@string/persion_news"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold|italic" />
-
-            <Button
-
-                android:layout_width="0dp"
-                android:layout_height="200px"
-                android:layout_weight="1"
-                android:alpha="1"
-                android:background="@drawable/newsicon"
-                android:paddingTop="5dp"
-                android:paddingEnd="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textStyle="bold|italic"></Button>
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:alpha="1"
-            android:background="@android:color/transparent"
-            android:gravity="right"
-            android:orientation="horizontal"
-            android:weightSum="5">
-
-            <Button
-                android:id="@+id/announcement"
-                android:layout_width="0dp"
-                android:layout_height="200px"
-                android:layout_weight="4"
-                android:background="@drawable/background_tab"
-                android:gravity="center_horizontal|center_vertical"
-                android:paddingRight="5dp"
-                android:text="@string/persion_announcement"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold|italic" />
-
-
-            <Button
-
-                android:layout_width="0dp"
-                android:layout_height="200px"
-                android:layout_weight="1"
-                android:background="@drawable/ic_announcement" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:alpha="1"
-            android:background="@android:color/transparent"
-            android:gravity="right"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/email"
-                android:layout_width="0dp"
-                android:layout_height="200px"
-                android:layout_weight="4"
-                android:alpha="1"
-                android:background="@drawable/background_tab"
-                android:gravity="center_horizontal|center_vertical"
-                android:paddingRight="8dp"
-                android:text="@string/persion_email"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
-                android:textStyle="bold|italic" />
-
-            <Button
-
-                android:layout_width="0dp"
-                android:layout_height="200px"
-                android:layout_weight="1"
-                android:background="@drawable/ic_email"
-                android:textDirection="rtl" />
-
-
-        </LinearLayout>
-
+        <Button
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_style"
+            android:ems="15"
+            android:text="@string/persion_email"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
 
     </LinearLayout>
 
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

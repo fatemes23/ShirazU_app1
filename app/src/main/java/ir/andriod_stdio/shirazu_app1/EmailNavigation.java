@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,8 +46,10 @@ public class EmailNavigation extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "hello ", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               /* Snackbar.make(view, "hello ", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                Intent intent = new Intent( EmailNavigation.this,ComposeMailActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -75,6 +78,9 @@ public class EmailNavigation extends AppCompatActivity
         TextDrawable drawable = TextDrawable.builder().buildRound(firstLetter, color); // radius in px
         navImageView.setImageDrawable(drawable);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //___________________________________________
 
 
 
@@ -110,6 +116,25 @@ public class EmailNavigation extends AppCompatActivity
             EmailListAdaptor adapter = new EmailListAdaptor(this, R.layout.email_list_adaptor_layout,UserArrayList );
             listView.setAdapter(adapter);
         }
+
+
+
+
+        //______________inja baraye click kardn roo ye har list___________________
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+
+                Intent i = new Intent(EmailNavigation.this, SingleMailActivity.class);
+                //If you wanna send any data to nextActicity.class you can use
+                // i.putExtra(String key, value.get(position));
+
+                //inja har chi bekhaii ezaf koni dige ok hast
+
+                startActivity(i);
+            }
+        });
+        //__________________________________________________________________
 
     }
 

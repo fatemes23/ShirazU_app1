@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
@@ -38,6 +40,9 @@ public class News extends AppCompatActivity {
         // Attach the view pager to the tab strip
         tabsStrip.setViewPager(viewPager);
 
+
+
+
         //__fateme in tike nmidoonm chie
         // Attach the page change listener to tab strip and **not** the view pager inside the activity
         tabsStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -63,7 +68,23 @@ public class News extends AppCompatActivity {
             }
         });
 
+        //_________________tool baaaar________________
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar12);
+        if(newsOrAnnouncement.equals("n")){
+            toolbar.setTitle("اخبار");
+        }else if (newsOrAnnouncement.equals("a") ){
+            toolbar.setTitle("اطلاعیه");
+        }
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_forward_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
+
+    //________________________________________
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
 

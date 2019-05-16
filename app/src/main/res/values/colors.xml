@@ -3,16 +3,23 @@
     <color name="colorPrimary">#1F2041</color>
     <color name="colorPrimaryDark">#0B132B</color>
     <color name="colorAccent">#b90039</color>
+    <color name="secondary_text">#757575</color>
+    <color name="whitePallet">#c8c8c8</color>
+    <color name="bluepallet">#008e97</color>
+
+    <color name="primary_text">#231F1F</color>
+    <color name="balck_title">#212121</color>
+    <color name="balck">#000001</color>
 
     <color name="gray">#CCBDBD</color>
     <color name="myWhite">#FFFFFF</color>
     <color name="myWhite2">#bebebe</color>
-    <color name="primary_text">#212121</color>
+
 
         <color name="primary_light">#C5CAE9</color>
 
-        <color name="balck_title">#212121</color>
-        <color name="secondary_text">#757575</color>
+
+
         <color name="icons">#FFFFFF</color>
         <color name="divider">#BDBDBD</color>
 

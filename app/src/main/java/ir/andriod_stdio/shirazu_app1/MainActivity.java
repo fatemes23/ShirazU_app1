@@ -1,5 +1,9 @@
 package ir.andriod_stdio.shirazu_app1;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +24,10 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -38,6 +46,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ImageView shz_logo;
+    private LinearLayout buttons;
+
+    private Button news;
+    private Button announcement;
+    private Button email;
 
     //****************************************MAN INJA RO TAGHIR DADAM********************************************karim
     static List<New> allnews;
@@ -49,8 +63,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_menu);
 
+        findviews();
+        logoAnimation();
+        onClick();
 
         //****************************************Thread vase gereftan news az server********************************************karim
         new Thread(
@@ -76,6 +93,72 @@ public class MainActivity extends AppCompatActivity {
         },4000);
     }
 
+    //*********************************** UI **********************************
+    public void findviews(){
+        shz_logo = (ImageView) findViewById(R.id.shz_img);
+        buttons = (LinearLayout) findViewById(R.id.buttons);
+        news = (Button) findViewById(R.id.news);
+        announcement = (Button) findViewById(R.id.announcement);
+        email = (Button) findViewById(R.id.email);
+    }
+
+    public void logoAnimation(){
+        ObjectAnimator animatorXscale = ObjectAnimator.ofFloat(shz_logo, "ScaleX", 1f, 1.5f, 1f);
+        ObjectAnimator animatorYscale= ObjectAnimator.ofFloat(shz_logo, "ScaleY", 1f, 1.5f, 1f);
+        ObjectAnimator animatorYtranslate= ObjectAnimator.ofFloat(shz_logo, "translationY", -400f);
+        animatorXscale.setDuration(3000);
+        animatorYscale.setDuration(3000);
+        animatorYtranslate.setDuration(3000);
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(animatorXscale,animatorYscale,animatorYtranslate);
+        animatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                buttons.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+            }
+        });
+        animatorSet.start();
+    }
+
+    public void onClick(){
+        news.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // bere be page fargment
+                Intent intent = new Intent( MainActivity.this,News.class);
+                //bara ye news.java moshakhas konim k alan news ro baz karde ya announcement
+                intent.putExtra("which_news_or_announcement" , "n");
+                startActivity(intent);
+            }
+        });
+
+        //______________
+        announcement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // bere be page fargment
+                Intent intent = new Intent( MainActivity.this,News.class);
+                intent.putExtra("which_news_or_announcement" , "a");
+                startActivity(intent);
+            }
+        });
+
+        //__________
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // bere be page email
+                Intent intent = new Intent( MainActivity.this,EmailActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
     //****************************************ALLNews va TodayNews ro man ezafe kardam********************************************karim
     private class AllNews extends AsyncTask<Void, Void, String> {
 
@@ -123,7 +206,11 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jsonobj = jsonarray.getJSONObject(i);
                     New khabar=new New();
                     khabar.subject=jsonobj.getString("subject");
+                    khabar.summary=jsonobj.getString("summary");
                     khabar.context=jsonobj.getString("context");
+                    khabar.source=jsonobj.getString("source");
+                    khabar.seen= Integer.parseInt(jsonobj.getString("seen"));
+                    khabar.id= Integer.parseInt(jsonobj.getString("id"));
                     khabar.date=jsonobj.getString("date").substring(0,10);
                     allnews.add(khabar);
                 }
@@ -181,6 +268,10 @@ public class MainActivity extends AppCompatActivity {
                     New khabar=new New();
                     khabar.subject=jsonobj.getString("subject");
                     khabar.context=jsonobj.getString("context");
+                    khabar.summary=jsonobj.getString("summary");
+                    khabar.source=jsonobj.getString("source");
+                    khabar.id= Integer.parseInt(jsonobj.getString("id"));
+                    khabar.seen= Integer.parseInt(jsonobj.getString("seen"));
                     khabar.date=jsonobj.getString("date").substring(0,10);
                     todaynews.add(khabar);
                 }
