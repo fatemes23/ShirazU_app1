@@ -1,9 +1,18 @@
 package ir.andriod_stdio.shirazu_app1;
 
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
+import android.os.Build;
+import android.provider.SyncStateContract;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,6 +27,11 @@ public class AnnouncmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announcment);
+
+
+        //***************************************nternet access chechikng **************************************************
+
+
         ///_________tool bar _____________
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarinannouncmenr);
         toolbar.setTitle("اطلاعیه");
@@ -51,4 +65,6 @@ public class AnnouncmentActivity extends AppCompatActivity {
         mylistview.setAdapter(adapter);
 
     }
+
+
 }

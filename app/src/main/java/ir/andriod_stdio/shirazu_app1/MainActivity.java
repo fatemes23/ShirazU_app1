@@ -4,8 +4,21 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -29,6 +42,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,15 +57,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import android.app.ProgressDialog;
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageView shz_logo;
     private LinearLayout buttons;
-
     private Button news;
     private Button announcement;
     private Button email;
+
+
 
     //****************************************MAN INJA RO TAGHIR DADAM********************************************karim
     static List<New> allnews;
@@ -68,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         findviews();
         logoAnimation();
         onClick();
+
+        //******************************test for internet conection*************************************************
 
         //****************************************Thread vase gereftan news az server********************************************karim
         new Thread(
@@ -122,11 +140,31 @@ public class MainActivity extends AppCompatActivity {
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (isOnline(getApplicationContext())){
+
+
+                    new CountDownTimer(2000, 1000) {
+                        public void onFinish() {
+                            // When timer is finished
+                            // Execute your code here
+                            Intent intent = new Intent( MainActivity.this,News.class);
+                            //bara ye news.java moshakhas konim k alan news ro baz karde ya announcement
+                            intent.putExtra("which_news_or_announcement" , "n");
+                            startActivity(intent);
+                        }
+
+                        public void onTick(long millisUntilFinished) {
+                            // millisUntilFinished    The amount of time until finished.
+                        }
+                    }.start();
+
+                }
+                else{
+                    mesg_box_exit();
+                }
                 // bere be page fargment
-                Intent intent = new Intent( MainActivity.this,News.class);
-                //bara ye news.java moshakhas konim k alan news ro baz karde ya announcement
-                intent.putExtra("which_news_or_announcement" , "n");
-                startActivity(intent);
+
             }
         });
 
@@ -134,10 +172,31 @@ public class MainActivity extends AppCompatActivity {
         announcement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // bere be page fargment
-                Intent intent = new Intent( MainActivity.this,AnnouncmentActivity.class);
-                intent.putExtra("which_news_or_announcement" , "a");
-                startActivity(intent);
+
+                if(isOnline(getApplicationContext())){
+
+                    new CountDownTimer(2000, 1000) {
+                        public void onFinish() {
+                            // When timer is finished
+                            // Execute your code here
+                            // bere be page fargment
+                            Intent intent = new Intent( MainActivity.this,AnnouncmentActivity.class);
+                            intent.putExtra("which_news_or_announcement" , "a");
+                            startActivity(intent);
+                        }
+
+                        public void onTick(long millisUntilFinished) {
+                            // millisUntilFinished    The amount of time until finished.
+                        }
+                    }.start();
+
+
+
+                } else{
+                    mesg_box_exit();
+
+                }
+
             }
         });
 
@@ -145,9 +204,28 @@ public class MainActivity extends AppCompatActivity {
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // bere be page email
-                Intent intent = new Intent( MainActivity.this,EmailActivity.class);
-                startActivity(intent);
+
+                if(isOnline(getApplicationContext())){
+
+                    new CountDownTimer(2000, 1000) {
+                        public void onFinish() {
+                            // When timer is finished
+                            // Execute your code here
+                            // bere be page email
+                            Intent intent = new Intent( MainActivity.this,EmailActivity.class);
+                            startActivity(intent);
+                        }
+
+                        public void onTick(long millisUntilFinished) {
+                            // millisUntilFinished    The amount of time until finished.
+                        }
+                    }.start();
+
+
+                }else{
+                    mesg_box_exit();
+                }
+
             }
         });
     }
@@ -274,5 +352,71 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ALLNews va TodayNews ro man ezafe kardam^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^karim
+
+
+
+    public void  mesg_box_exit(){
+        if (isOnline(getApplicationContext())) {
+            //do whatever you want to do
+        } else {
+            try {
+                android.support.v7.app.AlertDialog alertDialog = new android.support.v7.app.AlertDialog.Builder(MainActivity.this).create();
+
+                alertDialog.setTitle("عدم دسترسی به اینترنت");
+                alertDialog.setMessage("از اتصال دستگاه خود به اینترنت اطمینان پیدا کنید و سپس مجددا تلاش کنید .");
+                alertDialog.setIcon(R.drawable.ic_signal_wifi_off_black_24dp);
+                alertDialog.show();
+
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+
+
+    private BroadcastReceiver mConnReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            boolean noConnectivity = intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
+            String reason = intent.getStringExtra(ConnectivityManager.EXTRA_REASON);
+            boolean isFailover = intent.getBooleanExtra(ConnectivityManager.EXTRA_IS_FAILOVER, false);
+
+            NetworkInfo currentNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO);
+            NetworkInfo otherNetworkInfo = (NetworkInfo) intent.getParcelableExtra(ConnectivityManager.EXTRA_OTHER_NETWORK_INFO);
+
+            if(currentNetworkInfo.isConnected()){
+                //Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
+
+
+            }
+            else{
+
+                //Toast.makeText(getApplicationContext(), "Not Connected , pleas check your internet conection  then try again", Toast.LENGTH_LONG).show();
+                mesg_box_exit();
+
+            }
+        }
+    };
+
+
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public static boolean isOnline (Context context) {
+        boolean isOnline = false;
+        try {
+            ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkCapabilities capabilities = manager.getNetworkCapabilities(manager.getActiveNetwork());  // need ACCESS_NETWORK_STATE permission
+            isOnline = capabilities != null && capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isOnline;
+    }
+
+
+
+
+
 
 }
