@@ -3,6 +3,7 @@ package ir.andriod_stdio.shirazu_app1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -17,16 +18,17 @@ public class AnnouncmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announcment);
-
-        back = (Button) findViewById(R.id.announcment_back);
-
-        back.setOnClickListener(new View.OnClickListener() {
+        ///_________tool bar _____________
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarinannouncmenr);
+        toolbar.setTitle("اطلاعیه");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_forward_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( AnnouncmentActivity.this,MenuActivity.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                finish();
             }
         });
+        //__________
 
 
         ListView listview = (ListView)findViewById(R.id.announcment_listview);

@@ -82,15 +82,7 @@ public class MainActivity extends AppCompatActivity {
         //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Thread vase gereftan news az server^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^karim
 
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i = new Intent(MainActivity.this, MenuActivity.class);
-                startActivity(i);
-                finish();
 
-            }
-        },4000);
     }
 
     //*********************************** UI **********************************
@@ -143,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // bere be page fargment
-                Intent intent = new Intent( MainActivity.this,News.class);
+                Intent intent = new Intent( MainActivity.this,AnnouncmentActivity.class);
                 intent.putExtra("which_news_or_announcement" , "a");
                 startActivity(intent);
             }

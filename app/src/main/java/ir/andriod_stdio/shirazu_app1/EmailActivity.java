@@ -43,7 +43,7 @@ public class EmailActivity extends AppCompatActivity {
                         .addToBackStack(null)
                         .commit();*/
                 Intent intent = new Intent( EmailActivity.this,EmailNavigation.class);
-                //bara ye news.java moshakhas konim k alan news ro baz karde ya announcement
+
                 intent.putExtra("which_Inbox_or_sent_or_Draft" , "i");
                 startActivity(intent);
             }
