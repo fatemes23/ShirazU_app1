@@ -19,13 +19,16 @@ public class EmailListAdaptor extends ArrayAdapter<EmailsRow> {
     private Context activity;
     private List<EmailsRow> friendList;
     int mResource;
+    String whichPage;
 
-    public EmailListAdaptor(Context context, int resource, List<EmailsRow> objects) {
+    public EmailListAdaptor(Context context, int resource, List<EmailsRow> objects , String whichPage) {
         super(context, resource ,objects );
         this.activity = context;
         this.friendList = objects;
         this.mResource=resource;
+        this.whichPage=whichPage;//sentOrInbox _ trash
     }
+
 
     @Override
     public int getCount() {
@@ -84,7 +87,7 @@ public class EmailListAdaptor extends ArrayAdapter<EmailsRow> {
     }
 
     private class ViewHolder {
-        private ImageView imageView;//hanooz set kardn in baram vazeh nashode :\
+        private ImageView imageView;//nnmidoonm hanooz che type i begiram bara in
         private TextView friendsUsername;
         private TextView date;
         private TextView summeryOfEmail;

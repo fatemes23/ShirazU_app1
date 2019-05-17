@@ -43,9 +43,7 @@ public class EmailNavigation extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        ///_________set back button of phone __________
 
-        ///_________set back button of phone __________
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -106,10 +104,12 @@ public class EmailNavigation extends AppCompatActivity
             toolbar.setTitle("Sent");
         }else if (inboxOrSentOrDraft.equals("d")){
             toolbar.setTitle("Draft");
+        }else if(inboxOrSentOrDraft.equals("trash")){
+            toolbar.setTitle("trash");
         }
        // setSupportActionBar(toolbar);
 
-        setData();// inja too ye in tabe bayad tasimim begrim k sent ha namayesh dade bashan ya inbox ha
+        setData();// inja too ye in tabe bayad tasimim begrim k sent ha namayesh dade bashan ya inbox ha va data shono set koni
 
 
         if (inboxOrSentOrDraft.equals("d") ){
@@ -118,7 +118,7 @@ public class EmailNavigation extends AppCompatActivity
             // Toast.makeText(this , "Drafttttttt " , Toast.LENGTH_SHORT).show();
 
         }else{
-            EmailListAdaptor adapter = new EmailListAdaptor(this, R.layout.email_list_adaptor_layout,UserArrayList );
+            EmailListAdaptor adapter = new EmailListAdaptor(this, R.layout.email_list_adaptor_layout,UserArrayList ,"sentOrInbox" );
             listView.setAdapter(adapter);
         }
 
@@ -149,8 +149,19 @@ public class EmailNavigation extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+
         } else {
             super.onBackPressed();
+            if(inboxOrSentOrDraft.equals("i")){
+                //startActivity(new Intent(EmailNavigation.this, MainActivity.class));
+                finish();
+                //inja bayad bargardi b main activity vali nmikham harekate logo tekrar beshe set sh nakardm:/
+
+            }else{
+                Intent intent = new Intent(EmailNavigation.this , EmailNavigation.class);
+                intent.putExtra("which_Inbox_or_sent_or_Draft" , "i");
+                startActivity(intent);
+            }
         }
     }
 
@@ -208,6 +219,9 @@ public class EmailNavigation extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_trash) {
+            Intent intent = new Intent(EmailNavigation.this , EmailNavigation.class);
+            intent.putExtra("which_Inbox_or_sent_or_Draft" , "trash");
+            startActivity(intent);
 
         } else if (id == R.id.nav_spam) {
 
@@ -276,6 +290,13 @@ public class EmailNavigation extends AppCompatActivity
             // be jaye user name ii k dare emailesho chek mikone bezarim
             UserArrayList.add(new EmailsRow("username","date ","summery","title"));
             UserArrayList.add(new EmailsRow(null,"23 may","summery","title"));
+            UserArrayList.add(new EmailsRow("rr","23 may","summery","title"));
+            UserArrayList.add(new EmailsRow("nn","23 may","summery","title"));
+            UserArrayList.add(new EmailsRow("ee","23 may","summery","title"));
+        }
+        else if ( inboxOrSentOrDraft.equals("trash")){
+            UserArrayList.add(new EmailsRow("username","date ","summery","title"));
+            UserArrayList.add(new EmailsRow("trash","23 may","summery","title"));
             UserArrayList.add(new EmailsRow("rr","23 may","summery","title"));
             UserArrayList.add(new EmailsRow("nn","23 may","summery","title"));
             UserArrayList.add(new EmailsRow("ee","23 may","summery","title"));
