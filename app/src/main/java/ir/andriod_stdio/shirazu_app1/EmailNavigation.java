@@ -44,7 +44,7 @@ public class EmailNavigation extends AppCompatActivity
 
 
 
-
+        //_________floating action button /button e compose ______________
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +55,7 @@ public class EmailNavigation extends AppCompatActivity
                 startActivity(intent);
             }
         });
-
+        //_______________________________________________________________
 
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -73,9 +73,10 @@ public class EmailNavigation extends AppCompatActivity
         TextView navEmailAddres = (TextView) headerView.findViewById(R.id.nav_emailAddress);
         ImageView navImageView =(ImageView)headerView.findViewById(R.id.nav_imageView);
 
-        navUsername.setText("fateme");
+        String username = "fateme";
+        navUsername.setText(username);
         navEmailAddres.setText("example@shirazU.ac.ir");
-        String firstLetter = String.valueOf("fateme".charAt(0));
+        String firstLetter = String.valueOf(username.charAt(0));
         ColorGenerator generator = ColorGenerator.MATERIAL;
         int color = generator.getRandomColor();
         TextDrawable drawable = TextDrawable.builder().buildRound(firstLetter, color); // radius in px
@@ -86,15 +87,7 @@ public class EmailNavigation extends AppCompatActivity
         //___________________________________________
 
 
-
-
-
-
-
-
-
-
-        //____________________________________________________
+        //__________________toolbar __________________________________
         inboxOrSentOrDraft= getIntent().getStringExtra("which_Inbox_or_sent_or_Draft");//bara inke befahmim che page ii baz she
         listView = (ListView) findViewById(R.id.list_item);
 
@@ -108,9 +101,10 @@ public class EmailNavigation extends AppCompatActivity
             toolbar.setTitle("trash");
         }
        // setSupportActionBar(toolbar);
+        //_______________________________
 
-        setData();// inja too ye in tabe bayad tasimim begrim k sent ha namayesh dade bashan ya inbox ha va data shono set koni
-
+        setData();// too in function bayad array ha ro por konid
+        //____________kodoom lay out draft ya ... ___________________
 
         if (inboxOrSentOrDraft.equals("d") ){
             DraftEmailListAdaptor adapter = new DraftEmailListAdaptor(this, R.layout.activity_draft_email_list_adaptor,UserArrayList );
@@ -123,22 +117,62 @@ public class EmailNavigation extends AppCompatActivity
         }
 
 
-
-
         //______________inja baraye click kardn roo ye har list___________________
+        //______________mishe har etelaAti k khastin pas bedin be safe ye yedoone email masln
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+        if (inboxOrSentOrDraft.equals("i")){//inbox
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
 
-                Intent i = new Intent(EmailNavigation.this, SingleMailActivity.class);
-                //If you wanna send any data to nextActicity.class you can use
-                // i.putExtra(String key, value.get(position));
+                    Intent i = new Intent(EmailNavigation.this, SingleMailActivity.class);
+                    //If you wanna send any data to nextActicity.class you can use
+                    // i.putExtra(String key, value.get(position));
+                    i.putExtra("which_inbox_sent_", "inbox");
 
-                //inja har chi bekhaii ezaf koni dige ok hast
 
-                startActivity(i);
-            }
-        });
+                    startActivity(i);
+                }
+            });
+        }else if(inboxOrSentOrDraft.equals("d")){//draft
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+
+                    Intent i = new Intent(EmailNavigation.this, SingleMailActivity.class);
+                    //If you wanna send any data to nextActicity.class you can use
+                    // i.putExtra(String key, value.get(position));
+                    i.putExtra("which_inbox_sent_", "draft");
+
+
+                    startActivity(i);
+                }
+            });
+        }else if(inboxOrSentOrDraft.equals("s")){//sent
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+
+                    Intent i = new Intent(EmailNavigation.this, SingleMailActivity.class);
+                    //If you wanna send any data to nextActicity.class you can use
+                     i.putExtra("which_inbox_sent_", "sent");
+
+                    startActivity(i);
+                }
+            });
+        }else if(inboxOrSentOrDraft.equals("trash")){
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+
+                    Intent i = new Intent(EmailNavigation.this, SingleMailActivity.class);
+                    //If you wanna send any data to nextActicity.class you can use
+                    i.putExtra("which_inbox_sent_", "trash");
+
+
+
+                    startActivity(i);
+                }
+            });
+        }
+
+
         //__________________________________________________________________
 
     }
@@ -153,14 +187,14 @@ public class EmailNavigation extends AppCompatActivity
         } else {
             super.onBackPressed();
             if(inboxOrSentOrDraft.equals("i")){
-                //startActivity(new Intent(EmailNavigation.this, MainActivity.class));
-                finish();
+               // startActivity(new Intent(EmailNavigation.this, MainActivity.class));
+             //   finish();
                 //inja bayad bargardi b main activity vali nmikham harekate logo tekrar beshe set sh nakardm:/
 
             }else{
-                Intent intent = new Intent(EmailNavigation.this , EmailNavigation.class);
-                intent.putExtra("which_Inbox_or_sent_or_Draft" , "i");
-                startActivity(intent);
+              //  Intent intent = new Intent(EmailNavigation.this , EmailNavigation.class);
+               // intent.putExtra("which_Inbox_or_sent_or_Draft" , "i");
+              //  startActivity(intent);
             }
         }
     }
