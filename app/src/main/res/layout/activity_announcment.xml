@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AnnouncmentActivity"
     android:orientation="vertical">
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarinannouncmenr"
@@ -18,11 +19,20 @@
         app:titleTextColor="#FEFEFE"
         />
 
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
     <ListView
         android:id="@+id/announcment_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="6dp"
         android:paddingTop="2dp"
-        android:paddingEnd="6dp" />
-</LinearLayout>
+        android:paddingEnd="6dp"
+        android:layout_below="@+id/toolbarinannouncmenr"/>
+</RelativeLayout>
