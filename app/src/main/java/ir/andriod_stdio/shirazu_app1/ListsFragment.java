@@ -19,6 +19,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -139,16 +141,20 @@ public class ListsFragment extends Fragment {
         allRows = new ArrayList<>();
 
         Bitmap icon = BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background);
+        String pattern = "yyyy/MM/dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
 
         //*******************************ja ii k bar asase tag ha set mikoni *********
         if(nameOfPage.equals("اخبار دانشگاه")){
             for(int i=0;i<MainActivity.allnews.size();i++){
-                allRows.add(new NewsRaw(MainActivity.allnews.get(i).subject,MainActivity.allnews.get(i).date,MainActivity.allnews.get(i).summary,icon));
+                String date = simpleDateFormat.format(MainActivity.allnews.get(i).date);
+                allRows.add(new NewsRaw(MainActivity.allnews.get(i).subject,date,MainActivity.allnews.get(i).summary,icon));
             }
         }else if (nameOfPage.equals("اخبار امروز")){
             for(int i=0;i<MainActivity.todaynews.size();i++){
-            allRows.add(new NewsRaw(MainActivity.todaynews.get(i).subject,MainActivity.todaynews.get(i).date,MainActivity.todaynews.get(i).summary,icon));
+                String date = simpleDateFormat.format(MainActivity.allnews.get(i).date);
+            allRows.add(new NewsRaw(MainActivity.todaynews.get(i).subject,date,MainActivity.todaynews.get(i).summary,icon));
         }
         }else if ( nameOfPage.equals("اخبار مرتبط با دانشگاه")){
             allRows.add(new NewsRaw("inja akhabare mortabet ba danesh gah ","date","summery",icon));

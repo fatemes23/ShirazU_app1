@@ -55,7 +55,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import android.app.ProgressDialog;
 
@@ -283,11 +286,15 @@ public class MainActivity extends AppCompatActivity {
                     khabar.source=jsonobj.getString("source");
                     khabar.seen= Integer.parseInt(jsonobj.getString("seen"));
                     khabar.id= Integer.parseInt(jsonobj.getString("id"));
-                    khabar.date=jsonobj.getString("date").substring(0,10);
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    khabar.date= format.parse ( jsonobj.getString("date").substring(0,10));
+                    //khabar.date=new Date();
                     allnews.add(khabar);
                 }
 
             } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
@@ -344,11 +351,15 @@ public class MainActivity extends AppCompatActivity {
                     khabar.source=jsonobj.getString("source");
                     khabar.id= Integer.parseInt(jsonobj.getString("id"));
                     khabar.seen= Integer.parseInt(jsonobj.getString("seen"));
-                    khabar.date=jsonobj.getString("date").substring(0,10);
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    khabar.date= format.parse ( jsonobj.getString("date").substring(0,10));
+                    //khabar.date=new Date();
                     todaynews.add(khabar);
                 }
 
             } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
@@ -403,12 +414,15 @@ public class MainActivity extends AppCompatActivity {
                     announcement.subject=jsonobj.getString("subject");
                     announcement.context=jsonobj.getString("context");
                     announcement.id= Integer.parseInt(jsonobj.getString("id"));
-                    announcement.date=jsonobj.getString("sendDate").substring(0,10);
-                    announcement.deadLine=jsonobj.getString("deadLine").substring(0,10);
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    announcement.date= format.parse ( jsonobj.getString("sendDate").substring(0,10));
+                    announcement.deadLine=format.parse ( jsonobj.getString("deadLine").substring(0,10));
                     announ.add(announcement);
                 }
 
             } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
         }

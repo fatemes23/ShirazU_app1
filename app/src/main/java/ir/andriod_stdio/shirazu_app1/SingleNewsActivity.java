@@ -25,7 +25,7 @@ public class SingleNewsActivity extends AppCompatActivity {
             if (MainActivity.allnews.get(i).id==id){
                 newsContex.setText(MainActivity.allnews.get(i).context);
                 newsTitle.setText(MainActivity.allnews.get(i).subject);
-                newsDate.setText(MainActivity.allnews.get(i).date);
+                newsDate.setText(MainActivity.allnews.get(i).date.toString());
                 newsSource.setText(MainActivity.allnews.get(i).source);
                 newsViews.setText(String.valueOf(MainActivity.allnews.get(i).seen));
             }
