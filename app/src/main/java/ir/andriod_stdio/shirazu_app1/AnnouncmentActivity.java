@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class AnnouncmentActivity extends AppCompatActivity {
@@ -48,9 +49,12 @@ public class AnnouncmentActivity extends AppCompatActivity {
         ListView listview = (ListView)findViewById(R.id.announcment_listview);
 
         ArrayList<AnnouncmentRow> AnnouncmentArray = new ArrayList<>();
+        String pattern = "yyyy/MM/dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
         for(int i=0;i<MainActivity.announ.size();i++){
-            AnnouncmentArray.add(new AnnouncmentRow(MainActivity.announ.get(i).subject,MainActivity.announ.get(i).date));
+            String date = simpleDateFormat.format(MainActivity.announ.get(i).date);
+            AnnouncmentArray.add(new AnnouncmentRow(MainActivity.announ.get(i).subject,date));
         }
 
 //
