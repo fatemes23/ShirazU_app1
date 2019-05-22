@@ -148,12 +148,14 @@ public class ListsFragment extends Fragment {
         //*******************************ja ii k bar asase tag ha set mikoni *********
         if(nameOfPage.equals("اخبار دانشگاه")){
             for(int i=0;i<MainActivity.allnews.size();i++){
-                String date = simpleDateFormat.format(MainActivity.allnews.get(i).date);
+                String rooz= new JalaliCalendar(MainActivity.allnews.get(i).date).getDayOfWeekString();
+                String date = new JalaliCalendar(MainActivity.allnews.get(i).date).toString() +" "+ rooz;
                 allRows.add(new NewsRaw(MainActivity.allnews.get(i).subject,date,MainActivity.allnews.get(i).summary,icon));
             }
         }else if (nameOfPage.equals("اخبار امروز")){
             for(int i=0;i<MainActivity.todaynews.size();i++){
-                String date = simpleDateFormat.format(MainActivity.allnews.get(i).date);
+                String rooz= new JalaliCalendar(MainActivity.todaynews.get(i).date).getDayOfWeekString();
+                String date = new JalaliCalendar(MainActivity.todaynews.get(i).date).toString() +" "+ rooz;
             allRows.add(new NewsRaw(MainActivity.todaynews.get(i).subject,date,MainActivity.todaynews.get(i).summary,icon));
         }
         }else if ( nameOfPage.equals("اخبار مرتبط با دانشگاه")){

@@ -53,7 +53,8 @@ public class AnnouncmentActivity extends AppCompatActivity {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
         for(int i=0;i<MainActivity.announ.size();i++){
-            String date = simpleDateFormat.format(MainActivity.announ.get(i).date);
+            String rooz= new JalaliCalendar(MainActivity.announ.get(i).date).getDayOfWeekString();
+            String date = new JalaliCalendar(MainActivity.announ.get(i).date).toString() +" "+ rooz;
             AnnouncmentArray.add(new AnnouncmentRow(MainActivity.announ.get(i).subject,date));
         }
 
