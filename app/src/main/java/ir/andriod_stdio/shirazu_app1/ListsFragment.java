@@ -160,16 +160,6 @@ public class ListsFragment extends Fragment {
         }
         }else if ( nameOfPage.equals("اخبار مرتبط با دانشگاه")){
             allRows.add(new NewsRaw("inja akhabare mortabet ba danesh gah ","date","summery",icon));
-        }else if ( nameOfPage.equals("آموزشی")){
-            allRows.add(new NewsRaw("inja etelaiiee ye amoozeshi ","date","summery",icon));
-        }else if ( nameOfPage.equals("دانشجویی")){
-            allRows.add(new NewsRaw("inja etelaiiee ye دانشجویی ","date","summery",icon));
-        }else if ( nameOfPage.equals(" فرهنگی")){
-            allRows.add(new NewsRaw("inja etelaiiee ye فرهنگی ","date","summery",icon));
-        }else if ( nameOfPage.equals("پژوهشی")){
-            allRows.add(new NewsRaw("inja etelaiiee ye پژوهشی ","date","summery",icon));
-        }else if ( nameOfPage.equals("سایر")){
-            allRows.add(new NewsRaw("inja etelaiiee ye سایر ","date","summery",icon));
         }
 
 
@@ -183,7 +173,7 @@ public class ListsFragment extends Fragment {
 
         mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-
+                System.out.println("111111111");
                 Intent i = new Intent(ListsFragment.this.getActivity(), SingleNewsActivity.class);
                 //If you wanna send any data to nextActicity.class you can use
                // i.putExtra(String key, value.get(position));

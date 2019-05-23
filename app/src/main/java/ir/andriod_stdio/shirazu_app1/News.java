@@ -134,18 +134,10 @@ public class News extends AppCompatActivity {
                     //mikhad bebine rooye fragment chi namayesh bede
                     //___fateme ezaf karde */
                     ArrayList<String> nameOfakhabar = new ArrayList<String>();
-                    ArrayList<String> nameOfetaeeye = new ArrayList<String>();
 
                     nameOfakhabar.add("اخبار دانشگاه");
                     nameOfakhabar.add("اخبار امروز");
                     nameOfakhabar.add("اخبار مرتبط با دانشگاه");
-
-                    nameOfetaeeye.add("آموزشی");
-                    nameOfetaeeye.add("دانشجویی");
-                    nameOfetaeeye.add(" فرهنگی");
-                    nameOfetaeeye.add("پژوهشی");
-                    nameOfetaeeye.add("سایر");
-
                     //____fateme ezaf karde */
 
                     if(newsOrAnnouncement1.equals("n")){
@@ -164,23 +156,6 @@ public class News extends AppCompatActivity {
                             default:
                                 return null;
                         }
-                    }else if(newsOrAnnouncement1.equals("a")){
-
-                        switch (position) {
-                            case 0:
-                                return ListsFragment.newInstance(nameOfetaeeye.get(0),"2");
-                            case 1:
-                                return ListsFragment.newInstance(nameOfetaeeye.get(1), "5");
-                            case 2:
-                                return ListsFragment.newInstance(nameOfetaeeye.get(2) , "4");
-                            case 3 :
-                                return ListsFragment.newInstance(nameOfetaeeye.get(3) , "4");
-                            case 4 :
-                                return ListsFragment.newInstance(nameOfetaeeye.get(4) , "4");
-                            default:
-                                return null;
-                        }
-
                     }else{
                         return null;
 
@@ -193,7 +168,6 @@ public class News extends AppCompatActivity {
                 public CharSequence getPageTitle(int position) {
 
                     ArrayList<String> nameOfakhabar = new ArrayList<String>();
-                    ArrayList<String> nameOfetaeeye = new ArrayList<String>();
                     // ba tavajoh be etelaaati  k az news.java/menu.java migirim
                     //moshakhs mikonim oon bala chi neshoon bedm
 
@@ -203,15 +177,6 @@ public class News extends AppCompatActivity {
                         nameOfakhabar.add("اخبار امروز");
                         nameOfakhabar.add("اخبار مرتبط با دانشگاه");
                         return nameOfakhabar.get(position);
-                    }
-                    if(newsOrAnnouncement1.equals("a")) {
-
-                        nameOfetaeeye.add("آموزشی");
-                        nameOfetaeeye.add("دانشجویی");
-                        nameOfetaeeye.add(" فرهنگی");
-                        nameOfetaeeye.add("پژوهشی");
-                        nameOfetaeeye.add("سایر");
-                        return nameOfetaeeye.get(position);
                     }
                     else{
                         // Toast.makeText(this , "getPageTitle return null " ,Toast.LENGTH_LONG).show();
