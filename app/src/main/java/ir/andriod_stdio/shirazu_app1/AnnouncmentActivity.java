@@ -50,7 +50,7 @@ public class AnnouncmentActivity extends AppCompatActivity {
 
 
         Database.LoadData();
-        new CountDownTimer(1000, 1000) {
+        new CountDownTimer(3000, 1000) {
             public void onFinish() {
 
 
