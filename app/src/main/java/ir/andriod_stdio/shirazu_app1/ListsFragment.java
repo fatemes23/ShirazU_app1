@@ -147,16 +147,16 @@ public class ListsFragment extends Fragment {
 
         //*******************************ja ii k bar asase tag ha set mikoni *********
         if(nameOfPage.equals("اخبار دانشگاه")){
-            for(int i=0;i<MainActivity.allnews.size();i++){
-                String rooz= new JalaliCalendar(MainActivity.allnews.get(i).date).getDayOfWeekString();
-                String date = new JalaliCalendar(MainActivity.allnews.get(i).date).toString() +" "+ rooz;
-                allRows.add(new NewsRaw(MainActivity.allnews.get(i).subject,date,MainActivity.allnews.get(i).summary,icon));
+            for(int i=0;i<Database.allnews.size();i++){
+                String rooz= new JalaliCalendar(Database.allnews.get(i).date).getDayOfWeekString();
+                String date = new JalaliCalendar(Database.allnews.get(i).date).toString() +" "+ rooz;
+                allRows.add(new NewsRaw(Database.allnews.get(i).subject,date,Database.allnews.get(i).summary,icon));
             }
         }else if (nameOfPage.equals("اخبار امروز")){
-            for(int i=0;i<MainActivity.todaynews.size();i++){
-                String rooz= new JalaliCalendar(MainActivity.todaynews.get(i).date).getDayOfWeekString();
-                String date = new JalaliCalendar(MainActivity.todaynews.get(i).date).toString() +" "+ rooz;
-            allRows.add(new NewsRaw(MainActivity.todaynews.get(i).subject,date,MainActivity.todaynews.get(i).summary,icon));
+            for(int i=0;i<Database.todaynews.size();i++){
+                String rooz= new JalaliCalendar(Database.todaynews.get(i).date).getDayOfWeekString();
+                String date = new JalaliCalendar(Database.todaynews.get(i).date).toString() +" "+ rooz;
+            allRows.add(new NewsRaw(Database.todaynews.get(i).subject,date,Database.todaynews.get(i).summary,icon));
         }
         }else if ( nameOfPage.equals("اخبار مرتبط با دانشگاه")){
             allRows.add(new NewsRaw("inja akhabare mortabet ba danesh gah ","date","summery",icon));
@@ -187,9 +187,9 @@ public class ListsFragment extends Fragment {
                 Intent i = new Intent(ListsFragment.this.getActivity(), SingleNewsActivity.class);
                 //If you wanna send any data to nextActicity.class you can use
                // i.putExtra(String key, value.get(position));
-                i.putExtra("id",MainActivity.allnews.get(position).id);
+                i.putExtra("id",Database.allnews.get(position).id);
                 //inja har chi bekhaii ezaf koni dige ok hast
-                System.out.println(MainActivity.allnews.get(position).id);
+                System.out.println(Database.allnews.get(position).id);
                 startActivity(i);
             }
         });

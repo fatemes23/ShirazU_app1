@@ -33,8 +33,8 @@ public class News extends AppCompatActivity {
         spinner = (ProgressBar)findViewById(R.id.progressBar2);
 
 
-
-        new CountDownTimer(3000, 1000) {
+        Database.LoadData();
+        new CountDownTimer(1000, 1000) {
             public void onFinish() {
 
 

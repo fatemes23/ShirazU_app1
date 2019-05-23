@@ -21,15 +21,15 @@ public class SingleNewsActivity extends AppCompatActivity {
         TextView newsViews = (TextView)findViewById(R.id.news_views);
         TextView newsSource = (TextView)findViewById(R.id.news_source);
         int id = intent.getIntExtra("id", -1);
-        for (int i=0;i<MainActivity.allnews.size();i++){
-            if (MainActivity.allnews.get(i).id==id){
-                newsContex.setText(MainActivity.allnews.get(i).context);
-                newsTitle.setText(MainActivity.allnews.get(i).subject);
-                String rooz= new JalaliCalendar(MainActivity.allnews.get(i).date).getDayOfWeekString();
-                String date = new JalaliCalendar(MainActivity.allnews.get(i).date).toString() +" "+ rooz;
+        for (int i=0;i<Database.allnews.size();i++){
+            if (Database.allnews.get(i).id==id){
+                newsContex.setText(Database.allnews.get(i).context);
+                newsTitle.setText(Database.allnews.get(i).subject);
+                String rooz= new JalaliCalendar(Database.allnews.get(i).date).getDayOfWeekString();
+                String date = new JalaliCalendar(Database.allnews.get(i).date).toString() +" "+ rooz;
                 newsDate.setText(date);
-                newsSource.setText(MainActivity.allnews.get(i).source);
-                newsViews.setText(String.valueOf(MainActivity.allnews.get(i).seen));
+                newsSource.setText(Database.allnews.get(i).source);
+                newsViews.setText(String.valueOf(Database.allnews.get(i).seen));
             }
         }
 

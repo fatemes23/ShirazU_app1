@@ -22,10 +22,10 @@ public class ActivityOneAnnouncment extends AppCompatActivity {
         TextView title = (TextView)findViewById(R.id.title_tx);
 
         int id = intent.getIntExtra("id", -1);
-        for (int i=0;i<MainActivity.announ.size();i++){
-            if (MainActivity.announ.get(i).id == id){
-                textView.setText(MainActivity.announ.get(i).context);
-                title.setText(MainActivity.announ.get(i).subject);
+        for (int i=0;i<Database.announ.size();i++){
+            if (Database.announ.get(i).id == id){
+                textView.setText(Database.announ.get(i).context);
+                title.setText(Database.announ.get(i).subject);
                 //imageView.setImageResource(R.drawable.tafahomname);
 
             }
