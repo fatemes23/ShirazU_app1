@@ -90,6 +90,7 @@ public class News extends AppCompatActivity {
                     toolbar.setTitle("اطلاعیه");
                 }
                 toolbar.setNavigationIcon(R.drawable.ic_arrow_forward_black_24dp);
+                spinner.setVisibility(View.GONE);
                 toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
