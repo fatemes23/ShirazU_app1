@@ -58,6 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="right"
+                    android:paddingLeft="5dp"
                     android:paddingTop="10dp"
                     android:textColor="@color/secondary_text"
                     android:textSize="12sp"
