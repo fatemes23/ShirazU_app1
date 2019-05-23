@@ -15,10 +15,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -66,12 +68,31 @@ public class AnnouncmentActivity extends AppCompatActivity {
                 AnnouncmnetListAdeptor  adapter = new AnnouncmnetListAdeptor (AnnouncmentActivity.this , R.layout.announcment_element_activity , AnnouncmentArray);
                 mylistview.setAdapter(adapter);
 
+
+
             }
 
             public void onTick(long millisUntilFinished) {
                 // millisUntilFinished    The amount of time until finished.
             }
         }.start();
+
+        mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                 //id = (int) mylistview.getItemAtPosition(position);
+                int pos = mylistview.getPositionForView(v);
+
+                Intent intent = new Intent( AnnouncmentActivity.this,ActivityOneAnnouncment.class);
+                intent.putExtra("id",MainActivity.announ.get(pos).id);
+               // intent.putExtra("id",1);
+                //Toast.makeText(getApplicationContext(),"pos :"+MainActivity.announ.get(pos).id , Toast.LENGTH_LONG).show();
+                startActivity(intent);
+
+
+            }
+        });
 
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
