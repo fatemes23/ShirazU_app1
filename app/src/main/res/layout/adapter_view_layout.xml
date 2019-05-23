@@ -7,7 +7,10 @@
     android:layout_centerHorizontal="false"
     android:layout_centerVertical="false"
     android:contextClickable="false"
-
+    android:clickable="false"
+    android:descendantFocusability="blocksDescendants"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
     android:paddingTop="0dp">
 
 
@@ -19,6 +22,9 @@
         android:paddingEnd="8dp"
         android:paddingStart="0dp"
         android:id="@+id/cardview_news"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         >
 
 
@@ -26,7 +32,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:weightSum="8">
+            android:weightSum="8"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false">
 
 
 
@@ -36,7 +45,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:weightSum="6"
-                android:layout_weight="6">
+                android:layout_weight="6"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false">
 
                 <TextView
                     android:id="@+id/news_text"
@@ -48,7 +60,9 @@
                     android:paddingTop="15dp"
                     android:layout_marginRight="10dp"
                     android:gravity="right"
-
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     />
 
 
@@ -58,10 +72,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="right"
+                    android:paddingLeft="5dp"
                     android:paddingTop="10dp"
                     android:textColor="@color/secondary_text"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
 
 
             </LinearLayout>
@@ -69,13 +87,19 @@
                 android:id="@+id/fasele"
                 android:layout_width="5dp"
                 android:layout_height="match_parent"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:orientation="vertical"
                 android:paddingRight="5dp"
                 android:weightSum="2">
@@ -88,7 +112,9 @@
                     android:layout_gravity="left"
                     android:layout_weight="1"
 
-
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:contentDescription="@string/todo" />
 
                 <TextView
@@ -100,8 +126,10 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:textColor="@color/colorPrimary"
-
-                    android:textSize="11sp" />
+                    android:textSize="11sp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
             </LinearLayout>
 
 
