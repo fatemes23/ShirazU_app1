@@ -49,8 +49,8 @@ public class AnnouncmentActivity extends AppCompatActivity {
 
 
 
-
-        new CountDownTimer(3000, 1000) {
+        Database.LoadData();
+        new CountDownTimer(1000, 1000) {
             public void onFinish() {
 
 
@@ -58,10 +58,10 @@ public class AnnouncmentActivity extends AppCompatActivity {
                 String pattern = "yyyy/MM/dd";
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
-                for(int i=0;i<MainActivity.announ.size();i++){
-                    String rooz= new JalaliCalendar(MainActivity.announ.get(i).date).getDayOfWeekString();
-                    String date = new JalaliCalendar(MainActivity.announ.get(i).date).toString() +" "+ rooz;
-                    AnnouncmentArray.add(new AnnouncmentRow(MainActivity.announ.get(i).subject,date));
+                for(int i=0;i<Database.announ.size();i++){
+                    String rooz= new JalaliCalendar(Database.announ.get(i).date).getDayOfWeekString();
+                    String date = new JalaliCalendar(Database.announ.get(i).date).toString() +" "+ rooz;
+                    AnnouncmentArray.add(new AnnouncmentRow(Database.announ.get(i).subject,date));
                 }
                 spinner.setVisibility(View.GONE);
                 mylistview.setVisibility(View.VISIBLE);
@@ -85,7 +85,7 @@ public class AnnouncmentActivity extends AppCompatActivity {
                 int pos = mylistview.getPositionForView(v);
 
                 Intent intent = new Intent( AnnouncmentActivity.this,ActivityOneAnnouncment.class);
-                intent.putExtra("id",MainActivity.announ.get(pos).id);
+                intent.putExtra("id",Database.announ.get(pos).id);
                // intent.putExtra("id",1);
                 //Toast.makeText(getApplicationContext(),"pos :"+MainActivity.announ.get(pos).id , Toast.LENGTH_LONG).show();
                 startActivity(intent);
