@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.provider.SyncStateContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,15 +15,21 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class AnnouncmentActivity extends AppCompatActivity {
     private Button back;
+    private ProgressBar spinner;
+   private  ListView  mylistview;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +37,65 @@ public class AnnouncmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_announcment);
 
 
-        //***************************************nternet access chechikng **************************************************
+        //***************************************internet access chechikng **************************************************
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        mylistview = (ListView) findViewById(R.id.announcment_listview);
+        mylistview.setVisibility(View.GONE);
+
+
+        ListView listview = (ListView)findViewById(R.id.announcment_listview);
+
+
+
+
+
+        new CountDownTimer(3000, 1000) {
+            public void onFinish() {
+
+
+                ArrayList<AnnouncmentRow> AnnouncmentArray = new ArrayList<>();
+                String pattern = "yyyy/MM/dd";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+                for(int i=0;i<MainActivity.announ.size();i++){
+                    String rooz= new JalaliCalendar(MainActivity.announ.get(i).date).getDayOfWeekString();
+                    String date = new JalaliCalendar(MainActivity.announ.get(i).date).toString() +" "+ rooz;
+                    AnnouncmentArray.add(new AnnouncmentRow(MainActivity.announ.get(i).subject,date));
+                }
+                spinner.setVisibility(View.GONE);
+                mylistview.setVisibility(View.VISIBLE);
+                AnnouncmnetListAdeptor  adapter = new AnnouncmnetListAdeptor (AnnouncmentActivity.this , R.layout.announcment_element_activity , AnnouncmentArray);
+                mylistview.setAdapter(adapter);
+
+
+
+            }
+
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+            }
+        }.start();
+
+        mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                 //id = (int) mylistview.getItemAtPosition(position);
+                int pos = mylistview.getPositionForView(v);
+
+                Intent intent = new Intent( AnnouncmentActivity.this,ActivityOneAnnouncment.class);
+                intent.putExtra("id",MainActivity.announ.get(pos).id);
+               // intent.putExtra("id",1);
+                //Toast.makeText(getApplicationContext(),"pos :"+MainActivity.announ.get(pos).id , Toast.LENGTH_LONG).show();
+                startActivity(intent);
+
+
+            }
+        });
+
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
         ///_________tool bar _____________
@@ -46,17 +111,6 @@ public class AnnouncmentActivity extends AppCompatActivity {
         //__________
 
 
-        ListView listview = (ListView)findViewById(R.id.announcment_listview);
-
-        ArrayList<AnnouncmentRow> AnnouncmentArray = new ArrayList<>();
-        String pattern = "yyyy/MM/dd";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-
-        for(int i=0;i<MainActivity.announ.size();i++){
-            String rooz= new JalaliCalendar(MainActivity.announ.get(i).date).getDayOfWeekString();
-            String date = new JalaliCalendar(MainActivity.announ.get(i).date).toString() +" "+ rooz;
-            AnnouncmentArray.add(new AnnouncmentRow(MainActivity.announ.get(i).subject,date));
-        }
 
 //
 //        AnnouncmentArray.add(new AnnouncmentRow("مراسم اهدا جوایز و تقدیر از قهرمانان ورزشی دانشگاه شیراز ","دوشنبه ۱۳۹۸/۲/۲۳ "));
@@ -70,9 +124,7 @@ public class AnnouncmentActivity extends AppCompatActivity {
 //        AnnouncmentArray.add(new AnnouncmentRow("مراسم اهدا جوایز و تقدیر از قهرمانان ورزشی دانشگاه شیراز ","دوشنبه ۱۳۹۸/۲/۲۳ "));
 
 
-        AnnouncmnetListAdeptor  adapter = new AnnouncmnetListAdeptor (this , R.layout.announcment_element_activity , AnnouncmentArray);
-        ListView mylistview = (ListView) findViewById(R.id.announcment_listview);
-        mylistview.setAdapter(adapter);
+
 
     }
 

@@ -146,10 +146,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (isOnline(getApplicationContext())){
+                if (isOnline1()){
 
 
-                    new CountDownTimer(2000, 1000) {
+                    new CountDownTimer(0, 1000) {
                         public void onFinish() {
                             // When timer is finished
                             // Execute your code here
@@ -178,9 +178,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(isOnline(getApplicationContext())){
+                if(isOnline1()){
 
-                    new CountDownTimer(2000, 1000) {
+                    new CountDownTimer(0, 1000) {
                         public void onFinish() {
                             // When timer is finished
                             // Execute your code here
@@ -210,9 +210,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(isOnline(getApplicationContext())){
+                if(isOnline1()){
 
-                    new CountDownTimer(2000, 1000) {
+                    new CountDownTimer(0, 1000) {
                         public void onFinish() {
                             // When timer is finished
                             // Execute your code here
@@ -490,9 +490,12 @@ public class MainActivity extends AppCompatActivity {
         return isOnline;
     }
 
-
-
-
+    private boolean isOnline1() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
 
 }
