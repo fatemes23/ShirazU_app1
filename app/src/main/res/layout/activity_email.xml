@@ -20,12 +20,12 @@
 
         <ImageView
             android:id="@+id/email_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:paddingBottom="30dp"
-            android:src="@drawable/email_icon" />
+            android:src="@drawable/ic_open_envelope_back_interface_symbol_of_email" />
 
         <TextView
             android:id="@+id/enter_email"
