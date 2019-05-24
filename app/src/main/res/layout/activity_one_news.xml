@@ -7,6 +7,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:layoutDirection="rtl">
 
         <LinearLayout
@@ -25,18 +26,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/news_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:text="امضای تفاهم نامه ی هم کاری علمی میان دانشگاه شیراز و دانشگاه پوآتینه فرانسه"
                     android:textSize="25sp"
-                    android:text="امضای تفاهم نامه ی هم کاری علمی میان دانشگاه شیراز و دانشگاه پوآتینه فرانسه" />
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -53,8 +54,8 @@
                         android:id="@+id/news_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1.1.1398"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:text="1.1.1398" />
 
                 </LinearLayout>
 
@@ -66,14 +67,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/views"/>
+                        android:text="@string/views" />
 
                     <TextView
                         android:id="@+id/news_views"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="390"/>
+                        android:text="390" />
 
                 </LinearLayout>
 
@@ -82,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:textColor="@android:color/black"
+                    android:layout_marginBottom="5dp"
                     android:text="همزمان با حضور هيات دانشگاهي فرانسه در شيراز ؛ تفاهم نامه همكاري علمي ميان دانشگاه شيراز و دانشگاه پوآتيه فرانسه توسط روساي دو دانشگاه به امضا رسيد.
 تبادل استاد و دانشجو ، برگزاري دوره هاي مشترك آموزشي و انجام فعاليت هاي پژوهشي مشترك ؛ از محورهاي اين تفاهم نامه است.
 در نشست مشترك رئيس دانشگاه شيراز و رئيس دانشگاه پوآتيه فرانسه كه در سالن كنفرانس دفتر رياست دانشگاه شيراز ترتيب يافت ؛ درخصوص راه هاي گسترش همكاري هاي علمي و آموزشي دوجانبه بحث و تبادل نظر شد .
@@ -95,7 +96,7 @@
 وي افزود : در حال حاضر بيش از 30 هزار دانشجو كه حدود 4 هزار نفر آن ها از 122 كشور جهان هستند ؛ در دانشگاه پواتيه مشغول به تحصيل در رشته هاي مختلف مي باشند.
 رييس دانشگاه پوآتيه فرانسه ، با بيان تاريخچه و رشته ها ؛ اين دانشگاه را پيشرو در زمينه ي علوم بين رشته اي توصيف كرد و گفت : با گسترش دوره هاي بين رشته اي ، با ديدگاه كلي و نه تك بعدي به موضوعات نگريسته مي شود و مي توان به نيازهاي جامعه پاسخ داد.
 در اين مراسم كه Loïc Levoyer معاون اول رئيس دانشگاه پوآتيه ، دكتر نعمت اله جعفري، استاد دانشگاه پوآتيه ، دكتر جواد تشخوريان ، مدير حوزه رياست و روابط عمومي دانشگاه شيراز، دكتر ابراهيم عباسي، رئيس دانشكده حقوق و علوم سياسي ، دكتر شهرام ابراهيمي ، رئيس بخش حقوق جزا و جرم شناسي و دكتر حسين نجاري ، عضو هيات علمي دانشكده ادبيات و علوم انساني دانشگاه شيراز هم حضور داشتند ؛ در خصوص گسترش همكاري ها به ويژه راه اندازي رشته ي ''روانپزشكي جنايي قانوني'' با همكاري مشترك دانشگاه هاي شيراز، علوم پزشكي شيراز و پوآتيه فرانسه ، بحث و تبادل نظر صورت گرفت."
-                    android:layout_marginBottom="5dp"/>
+                    android:textColor="@android:color/black" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -105,13 +106,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/source"/>
+                        android:text="@string/source" />
 
                     <TextView
                         android:id="@+id/news_source"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ایرنا"/>
+                        android:text="ایرنا" />
 
                 </LinearLayout>
 
