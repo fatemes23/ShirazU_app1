@@ -36,13 +36,12 @@
         <EditText
             android:id="@+id/username_or_email"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_gravity="right"
             android:background="@drawable/edit_text_style"
             android:ems="15"
             android:inputType="textEmailAddress"
-
-            android:textCursorDrawable="@color/bluepallet"/>
+            android:textCursorDrawable="@color/bluepallet" />
 
         <TextView
             android:id="@+id/enter_password"
@@ -56,12 +55,11 @@
         <EditText
             android:id="@+id/password"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:background="@drawable/edit_text_style"
             android:ems="15"
             android:inputType="textPassword"
-
-            android:textCursorDrawable="@color/bluepallet"/>
+            android:textCursorDrawable="@color/bluepallet" />
 
         <Button
             android:id="@+id/log_in"
