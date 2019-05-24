@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         news = (Button) findViewById(R.id.news);
         announcement = (Button) findViewById(R.id.announcement);
         email = (Button) findViewById(R.id.email);
-        shz_uni_pic = (ImageView) findViewById(R.id.shz_pic);
+        shz_uni_pic = (ImageView) findViewById(R.id.shz_img);
     }
 
     public void logoAnimation(){
