@@ -19,16 +19,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar12"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:textDirection="rtl"
+            android:background="@color/colorPrimary"
             android:layoutDirection="rtl"
-            app:titleTextColor="#FEFEFE"
-            />
+            android:textDirection="rtl"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="#FEFEFE" />
 
         <com.astuetz.PagerSlidingTabStrip
             android:id="@+id/tabs"
