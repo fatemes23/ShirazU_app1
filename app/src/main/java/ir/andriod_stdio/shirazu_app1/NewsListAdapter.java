@@ -18,6 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 public class NewsListAdapter extends ArrayAdapter<NewsRaw> {
     private Context mContext ;
@@ -37,7 +39,9 @@ public class NewsListAdapter extends ArrayAdapter<NewsRaw> {
         String title = getItem(position).getTitle();
         String date = getItem(position).getDate();
         String summeryNews = getItem(position).getSummeryNews();
-        Bitmap imgNews = getItem(position).getImgNews();
+
+        //bitmap --> String
+        String imgNews = getItem(position).getImgNews();
 
         NewsRaw newsRow = new NewsRaw(title,date,summeryNews,imgNews);
         LayoutInflater inflater= LayoutInflater.from(mContext);
@@ -55,8 +59,11 @@ public class NewsListAdapter extends ArrayAdapter<NewsRaw> {
 
 
         //imgTV.setImageBitmap();
-        imgTV.setImageResource(R.drawable.mooze);
+        //imgTV.setImageResource(R.drawable.mooze);
 
+
+        //used gilde to load pic from url
+        Glide.with(mContext).load(imgNews).into(imgTV);
         return  convertView;
     }
 }

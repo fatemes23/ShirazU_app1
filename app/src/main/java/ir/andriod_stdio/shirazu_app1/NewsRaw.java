@@ -9,13 +9,19 @@ public class NewsRaw {
     private  String title ;
     private  String date ;
     private  String summeryNews ;
-    private Bitmap imgNews;
 
-    public NewsRaw(String title, String date, String summeryNews, Bitmap imgNews) {
+    //bitmap --> String
+    private String imgNews;
+
+
+    //bitmap --> String
+    public NewsRaw(String title, String date, String summeryNews, String imgNews) {
         this.title = title;
         this.date = date;
         this.summeryNews = summeryNews;
-        // this.imgNews = imgNews;
+
+
+        this.imgNews = imgNews;
     }
 
     public String getTitle() {
@@ -42,11 +48,13 @@ public class NewsRaw {
         this.summeryNews = summeryNews;
     }
 
-    public Bitmap getImgNews() {
+    //bitmap --> String
+    public String getImgNews() {
         return imgNews;
     }
 
-    public void setImgNews(Bitmap imgNews) {
+    //bitmap --> String
+    public void setImgNews(String imgNews) {
         this.imgNews = imgNews;
     }
 }
