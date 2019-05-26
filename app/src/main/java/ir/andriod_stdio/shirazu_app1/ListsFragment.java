@@ -113,7 +113,7 @@ public class ListsFragment extends Fragment {
     }
 
     ArrayList<NewsRaw>  allRows ;
-     ;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -141,6 +141,7 @@ public class ListsFragment extends Fragment {
         allRows = new ArrayList<>();
 
         Bitmap icon = BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher_background);
+
         String pattern = "yyyy/MM/dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
@@ -150,16 +151,22 @@ public class ListsFragment extends Fragment {
             for(int i=0;i<Database.allnews.size();i++){
                 String rooz= new JalaliCalendar(Database.allnews.get(i).date).getDayOfWeekString();
                 String date = new JalaliCalendar(Database.allnews.get(i).date).toString() +" "+ rooz;
-                allRows.add(new NewsRaw(Database.allnews.get(i).subject,date,Database.allnews.get(i).summary,icon));
+
+                //replace icon with pic url (Database.server+Database.allnews.get(i).picture)
+                allRows.add(new NewsRaw(Database.allnews.get(i).subject,date,Database.allnews.get(i).summary,Database.server+Database.allnews.get(i).picture));
             }
         }else if (nameOfPage.equals("اخبار امروز")){
             for(int i=0;i<Database.todaynews.size();i++){
                 String rooz= new JalaliCalendar(Database.todaynews.get(i).date).getDayOfWeekString();
                 String date = new JalaliCalendar(Database.todaynews.get(i).date).toString() +" "+ rooz;
-            allRows.add(new NewsRaw(Database.todaynews.get(i).subject,date,Database.todaynews.get(i).summary,icon));
+
+                //replace icon with pic url (Database.server+Database.todaynews.get(i).picture)
+            allRows.add(new NewsRaw(Database.todaynews.get(i).subject,date,Database.todaynews.get(i).summary,Database.server+Database.todaynews.get(i).picture));
         }
         }else if ( nameOfPage.equals("اخبار مرتبط با دانشگاه")){
-            allRows.add(new NewsRaw("inja akhabare mortabet ba danesh gah ","date","summery",icon));
+
+            //replace icon with pic url (Database.server+Database.allnews.get(0).picture)
+            allRows.add(new NewsRaw("inja akhabare mortabet ba danesh gah ","date","summery",Database.server+Database.allnews.get(0).picture));
         }
 
 

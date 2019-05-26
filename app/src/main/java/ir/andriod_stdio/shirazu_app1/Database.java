@@ -93,6 +93,8 @@ public class Database {
                     khabar.summary=jsonobj.getString("summary");
                     khabar.context=jsonobj.getString("context");
                     khabar.source=jsonobj.getString("source");
+
+                    khabar.picture=jsonobj.getString("picture");
                     khabar.seen= Integer.parseInt(jsonobj.getString("seen"));
                     khabar.id= Integer.parseInt(jsonobj.getString("id"));
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -158,6 +160,7 @@ public class Database {
                     khabar.context=jsonobj.getString("context");
                     khabar.summary=jsonobj.getString("summary");
                     khabar.source=jsonobj.getString("source");
+                    khabar.picture=jsonobj.getString("picture");
                     khabar.id= Integer.parseInt(jsonobj.getString("id"));
                     khabar.seen= Integer.parseInt(jsonobj.getString("seen"));
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -222,6 +225,7 @@ public class Database {
                     Announcement announcement=new Announcement();
                     announcement.subject=jsonobj.getString("subject");
                     announcement.context=jsonobj.getString("context");
+                    announcement.picture=jsonobj.getString("picture");
                     announcement.id= Integer.parseInt(jsonobj.getString("id"));
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                     announcement.date= format.parse ( jsonobj.getString("sendDate").substring(0,10));

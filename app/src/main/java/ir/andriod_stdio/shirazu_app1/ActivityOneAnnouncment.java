@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 public class ActivityOneAnnouncment extends AppCompatActivity {
 
     @Override
@@ -27,6 +29,13 @@ public class ActivityOneAnnouncment extends AppCompatActivity {
                 textView.setText(Database.announ.get(i).context);
                 title.setText(Database.announ.get(i).subject);
                 //imageView.setImageResource(R.drawable.tafahomname);
+                if ((Database.announ.get(i).picture).equals("/media/pic_folder/non.png")) {
+
+                } else {
+                    Glide.with(this).load(Database.server+Database.announ.get(i).picture).into(imageView);
+                }
+
+
 
             }
         }
