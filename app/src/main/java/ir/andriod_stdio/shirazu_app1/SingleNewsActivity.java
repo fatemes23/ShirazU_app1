@@ -28,20 +28,40 @@ public class SingleNewsActivity extends AppCompatActivity {
         TextView newsViews = (TextView)findViewById(R.id.news_views);
         TextView newsSource = (TextView)findViewById(R.id.news_source);
         int id = intent.getIntExtra("id", -1);
-        for (int i=0;i<Database.allnews.size();i++){
-            if (Database.allnews.get(i).id==id){
-                newsContex.setText(Database.allnews.get(i).context);
-                newsTitle.setText(Database.allnews.get(i).subject);
+        boolean related = intent.getBooleanExtra("related", true);
 
-                Glide.with(this).load(Database.server+Database.allnews.get(i).picture).into(imageView);
+        if (related) {
+            for (int i=0;i<Database.relatednews.size();i++){
+                if (Database.relatednews.get(i).id==id){
+                    newsContex.setText(Database.relatednews.get(i).context);
+                    newsTitle.setText(Database.relatednews.get(i).subject);
 
-                String rooz= new JalaliCalendar(Database.allnews.get(i).date).getDayOfWeekString();
-                String date = new JalaliCalendar(Database.allnews.get(i).date).toString() +" "+ rooz;
-                newsDate.setText(date);
-                newsSource.setText(Database.allnews.get(i).source);
-                newsViews.setText(String.valueOf(Database.allnews.get(i).seen));
+                    Glide.with(this).load(Database.server+Database.relatednews.get(i).picture).into(imageView);
+
+                    String rooz= new JalaliCalendar(Database.relatednews.get(i).date).getDayOfWeekString();
+                    String date = new JalaliCalendar(Database.relatednews.get(i).date).toString() +" "+ rooz;
+                    newsDate.setText(date);
+                    newsSource.setText(Database.relatednews.get(i).source);
+                    newsViews.setText(String.valueOf(Database.relatednews.get(i).seen));
+                }
+            }
+        } else {
+            for (int i=0;i<Database.allnews.size();i++){
+                if (Database.allnews.get(i).id==id){
+                    newsContex.setText(Database.allnews.get(i).context);
+                    newsTitle.setText(Database.allnews.get(i).subject);
+
+                    Glide.with(this).load(Database.server+Database.allnews.get(i).picture).into(imageView);
+
+                    String rooz= new JalaliCalendar(Database.allnews.get(i).date).getDayOfWeekString();
+                    String date = new JalaliCalendar(Database.allnews.get(i).date).toString() +" "+ rooz;
+                    newsDate.setText(date);
+                    newsSource.setText(Database.allnews.get(i).source);
+                    newsViews.setText(String.valueOf(Database.allnews.get(i).seen));
+                }
             }
         }
+
 
 
        //imageView.setImageResource(R.drawable.tafahomname);

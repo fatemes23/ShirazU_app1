@@ -85,6 +85,7 @@ public class ListsFragment extends Fragment {
     private String nameOfPage;
     private int numberOfListRow;
 
+    boolean related;
 
 
     private OnFragmentInteractionListener mListener;
@@ -148,6 +149,7 @@ public class ListsFragment extends Fragment {
 
         //*******************************ja ii k bar asase tag ha set mikoni *********
         if(nameOfPage.equals("اخبار دانشگاه")){
+            related=false;
             for(int i=0;i<Database.allnews.size();i++){
                 String rooz= new JalaliCalendar(Database.allnews.get(i).date).getDayOfWeekString();
                 String date = new JalaliCalendar(Database.allnews.get(i).date).toString() +" "+ rooz;
@@ -156,6 +158,7 @@ public class ListsFragment extends Fragment {
                 allRows.add(new NewsRaw(Database.allnews.get(i).subject,date,Database.allnews.get(i).summary,Database.server+Database.allnews.get(i).picture));
             }
         }else if (nameOfPage.equals("اخبار امروز")){
+            related=false;
             for(int i=0;i<Database.todaynews.size();i++){
                 String rooz= new JalaliCalendar(Database.todaynews.get(i).date).getDayOfWeekString();
                 String date = new JalaliCalendar(Database.todaynews.get(i).date).toString() +" "+ rooz;
@@ -163,10 +166,15 @@ public class ListsFragment extends Fragment {
                 //replace icon with pic url (Database.server+Database.todaynews.get(i).picture)
             allRows.add(new NewsRaw(Database.todaynews.get(i).subject,date,Database.todaynews.get(i).summary,Database.server+Database.todaynews.get(i).picture));
         }
-        }else if ( nameOfPage.equals("اخبار مرتبط با دانشگاه")){
+        }else if ( nameOfPage.equals("اخبار مرتبط با دانشگاه")) {
+            related=true;
+            for (int i = 0; i < Database.relatednews.size(); i++) {
+                String rooz = new JalaliCalendar(Database.relatednews.get(i).date).getDayOfWeekString();
+                String date = new JalaliCalendar(Database.relatednews.get(i).date).toString() + " " + rooz;
 
-            //replace icon with pic url (Database.server+Database.allnews.get(0).picture)
-            allRows.add(new NewsRaw("inja akhabare mortabet ba danesh gah ","date","summery",Database.server+Database.allnews.get(0).picture));
+                allRows.add(new NewsRaw(Database.relatednews.get(i).subject, date, Database.relatednews.get(i).summary, Database.server + Database.relatednews.get(i).picture));
+
+            }
         }
 
 
@@ -184,9 +192,14 @@ public class ListsFragment extends Fragment {
                 Intent i = new Intent(ListsFragment.this.getActivity(), SingleNewsActivity.class);
                 //If you wanna send any data to nextActicity.class you can use
                // i.putExtra(String key, value.get(position));
-                i.putExtra("id",Database.allnews.get(position).id);
+                i.putExtra("related", related);
+                if (related) {
+                    i.putExtra("id", Database.relatednews.get(position).id);
+                } else {
+                    i.putExtra("id",Database.allnews.get(position).id);
+                }
                 //inja har chi bekhaii ezaf koni dige ok hast
-                System.out.println(Database.allnews.get(position).id);
+                //System.out.println(Database.allnews.get(position).id);
                 startActivity(i);
             }
         });
