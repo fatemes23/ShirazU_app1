@@ -22,6 +22,7 @@ public class Database {
     //****************************************MAN INJA RO TAGHIR DADAM********************************************karim
     static List<New> allnews;
     static List<New> todaynews;
+    static List<New> relatednews;
     static List<Announcement> announ;
     static String server="http://alibhapp.pythonanywhere.com/";
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^MAN INJA RO TAGHIR DADAM^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^karim
@@ -35,6 +36,7 @@ public class Database {
                     public void run() {
                         new AllNews().execute();
                         new TodayNews().execute();
+                        new RelatedNews().execute();
                         new Announcementlist().execute();
                     }
                 }
@@ -176,6 +178,73 @@ public class Database {
             }
         }
     }
+
+    private static class RelatedNews extends AsyncTask<Void, Void, String> {
+
+        HttpURLConnection urlConnection = null;
+        BufferedReader reader = null;
+        String resultJson = "";
+
+        @Override
+        protected String doInBackground(Void... params) {
+            try {
+                String site_url_json = server+"akhbar/related";
+                URL url = new URL(site_url_json);
+
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("GET");
+                urlConnection.connect();
+
+                InputStream inputStream = urlConnection.getInputStream();
+                StringBuffer buffer = new StringBuffer();
+
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                resultJson = buffer.toString();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return resultJson;
+        }
+
+
+        protected void onPostExecute(String strJson) {
+            super.onPostExecute(strJson);
+
+            try {
+                JSONArray jsonarray = new JSONArray(strJson);
+
+                relatednews = new ArrayList<New>();
+                for(int i=0;i<jsonarray.length();i++){
+                    JSONObject jsonobj = jsonarray.getJSONObject(i);
+                    New khabar=new New();
+                    khabar.subject=jsonobj.getString("subject");
+                    khabar.context=jsonobj.getString("context");
+                    khabar.summary=jsonobj.getString("summary");
+                    khabar.source=jsonobj.getString("source");
+                    khabar.picture=jsonobj.getString("picture");
+                    khabar.id= Integer.parseInt(jsonobj.getString("id"));
+                    khabar.seen= Integer.parseInt(jsonobj.getString("seen"));
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    khabar.date= format.parse ( jsonobj.getString("date").substring(0,10));
+                    //khabar.date=new Date();
+                    relatednews.add(khabar);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     private static class Announcementlist extends AsyncTask<Void, Void, String> {
 
