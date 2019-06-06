@@ -12,7 +12,7 @@
         android:id="@+id/toolbarinannouncmenr"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:layoutDirection="rtl"
         android:textDirection="rtl"
         app:popupTheme="@style/AppTheme.PopupOverlay"

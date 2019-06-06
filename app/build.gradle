@@ -30,6 +30,8 @@ dependencies {
     implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
+    implementation 'com.android.support:customtabs:26.1.0'
+
     implementation ('com.github.bumptech.glide:glide:4.9.0') {
         exclude group: "com.android.support"
     }

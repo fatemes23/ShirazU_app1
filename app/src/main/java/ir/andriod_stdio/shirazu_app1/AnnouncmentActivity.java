@@ -100,7 +100,7 @@ public class AnnouncmentActivity extends AppCompatActivity {
 
         ///_________tool bar _____________
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarinannouncmenr);
-        toolbar.setTitle("اطلاعیه");
+        toolbar.setTitle(getString(R.string.persion_announcement));
         toolbar.setNavigationIcon(R.drawable.ic_arrow_forward_black_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

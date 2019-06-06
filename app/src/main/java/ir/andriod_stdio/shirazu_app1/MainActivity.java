@@ -6,7 +6,9 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,11 +16,14 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.provider.SyncStateContract;
+import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -201,14 +206,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(isOnline1()){
-
                     new CountDownTimer(0, 1000) {
                         public void onFinish() {
                             // When timer is finished
                             // Execute your code here
                             // bere be page email
-                            Intent intent = new Intent( MainActivity.this,EmailActivity.class);
-                            startActivity(intent);
+                          /*  Intent intent = new Intent( MainActivity.this,EmailActivity.class);
+                            startActivity(intent);*/
+
+
+                            // Use a CustomTabsIntent.Builder to configure CustomTabsIntent.
+                            String url = "https://webmail.cse.shirazu.ac.ir";
+                            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+// set toolbar color and/or setting custom actions before invoking build()
+// Once ready, call CustomTabsIntent.Builder.build() to create a CustomTabsIntent
+
+// set toolbar color
+                            builder.setToolbarColor(ContextCompat.getColor(MainActivity.this, R.color.colorPrimaryDark));
+                            CustomTabsIntent customTabsIntent = builder.build();
+// and launch the desired Url with CustomTabsIntent.launchUrl()
+                            customTabsIntent.launchUrl(MainActivity.this, Uri.parse(url));
+
+
+
+
                         }
 
                         public void onTick(long millisUntilFinished) {

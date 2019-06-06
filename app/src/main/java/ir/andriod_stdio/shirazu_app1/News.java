@@ -85,9 +85,10 @@ public class News extends AppCompatActivity {
                 //_________________tool baaaar________________
                 Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar12);
                 if(newsOrAnnouncement.equals("n")){
-                    toolbar.setTitle("اخبار");
+
+                    toolbar.setTitle(getString(R.string.persion_news));
                 }else if (newsOrAnnouncement.equals("a") ){
-                    toolbar.setTitle("اطلاعیه");
+                    toolbar.setTitle(getString(R.string.persion_announcement));
                 }
                 toolbar.setNavigationIcon(R.drawable.ic_arrow_forward_black_24dp);
                 spinner.setVisibility(View.GONE);
